@@ -40,6 +40,46 @@ function initializeApp(data) {
         });
     });
 
+    // send Image Messages call
+    document.getElementById('sendimagemessagebutton').addEventListener('click', function () {
+        liff.sendMessages([{
+            type: 'image',
+            originalContentUrl: 'https://morimorim-line-bot-sdk-php.herokuapp.com/static/rich/1040',
+            previewImageUrl: 'https://morimorim-line-bot-sdk-php.herokuapp.com/static/rich/240'
+        }]).then(function () {
+            window.alert("Message sent");
+        }).catch(function (error) {
+            window.alert("Error sending message: " + error);
+        });
+    });
+
+    // send Audio Messages call
+    document.getElementById('sendaudiomessagebutton').addEventListener('click', function () {
+        liff.sendMessages([{
+            type: 'audio',
+            originalContentUrl: 'http://soundbible.com/mp3/tasmanian-devil-daniel_simon.mp3',
+            duration: 60
+        }]).then(function () {
+            window.alert("Message sent");
+        }).catch(function (error) {
+            window.alert("Error sending message: " + error);
+        });
+    });
+
+    // send Video Messages call
+    document.getElementById('sendvideomessagebutton').addEventListener('click', function () {
+        liff.sendMessages([{
+            type: 'video',
+            originalContentUrl: 'http://morimorim-line-bot-sdk-php.herokuapp.com/static/video.mp4',
+            previewImageUrl: 'http://morimorim-line-bot-sdk-php.herokuapp.com/static/preview.jpg',
+            duration: 100
+        }]).then(function () {
+            window.alert("Message sent");
+        }).catch(function (error) {
+            window.alert("Error sending message: " + error);
+        });
+    });
+
     // get access token
     document.getElementById('getaccesstoken').addEventListener('click', function () {
         const accessToken = liff.getAccessToken();
